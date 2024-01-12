@@ -57,22 +57,56 @@ def make_prediction(bathroom, bedroom, state, property_type):
 
 
 # Streamlit UI
-def main():
-    st.title("House Price Prediction")
+# def main():
+#     st.title("House Price Prediction")
 
-    # User inputs
-    bathroom = st.number_input("Bathroom", min_value=1, max_value=10, step=1, value=2)
-    bedroom = st.number_input("Bedroom", min_value=1, max_value=10, step=1, value=3)
-    state = st.selectbox("State", options=list(state_encoding.keys()))
+#     # User inputs
+#     bathroom = st.number_input("Bathroom", min_value=1, max_value=10, step=1, value=2)
+#     bedroom = st.number_input("Bedroom", min_value=1, max_value=10, step=1, value=3)
+#     state = st.selectbox("State", options=list(state_encoding.keys()))
+#     property_type = st.selectbox(
+#         "Property Type", options=list(property_type_encoding.keys())
+#     )
+
+#     # Predict button
+#     if st.button("Predict"):
+#         # Get prediction
+#         prediction = make_prediction(bathroom, bedroom, state, property_type)
+#         st.success(f"The predicted house price is: RM {round(prediction[0],2)}")
+
+
+def main():
+    st.title(":cityscape: House Price Prediction")
+
+    # Using columns for a better layout
+    col1, col2 = st.columns(2)
+
+    with col1:
+        bathroom = st.number_input(
+            "Bathroom", min_value=1, max_value=10, step=1, value=2
+        )
+
+    with col2:
+        bedroom = st.number_input("Bedroom", min_value=1, max_value=10, step=1, value=3)
+
+    # Dropdowns for state and property type
+    state = st.selectbox("State", options=list(state_encoding.keys()), index=0)
     property_type = st.selectbox(
-        "Property Type", options=list(property_type_encoding.keys())
+        "Property Type", options=list(property_type_encoding.keys()), index=0
     )
 
-    # Predict button
-    if st.button("Predict"):
-        # Get prediction
+    # Predict button with better styling
+    if st.button("Predict", key="predict"):
         prediction = make_prediction(bathroom, bedroom, state, property_type)
-        st.success(f"The predicted house price is: RM {round(prediction[0],2)}")
+        st.success(f"The predicted house price is: RM {round(prediction[0], 2)}")
+
+    # Adding a footer for aesthetic balance
+    st.markdown("---")
+    st.markdown("House Price Prediction App | Developed by Group 10")
+
+
+if __name__ == "__main__":
+    main()
 
 
 if __name__ == "__main__":
