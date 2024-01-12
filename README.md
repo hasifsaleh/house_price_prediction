@@ -17,11 +17,9 @@ pickle/joblib: Used for model serialization and deserialization
 Setup and Installation
 To set up and run this project locally:
 
-1. Clone the Repository:
-git clone https://github.com/your-username/your-repository-name.git
+1. Clone the Repository.
 
-3. Navigate to the Project Directory:
-cd your-repository-name
+3. Navigate to the Project Directory
 
 4. Install Dependencies:
 pip install -r requirements.txt
