@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
-
 import pickle
-
-import joblib
 
 
 # Manual encodings (same as used in the model training)
@@ -37,12 +34,9 @@ state_encoding = {
 }
 
 
-# Load your trained model (ensure it's in the same directory or provide the correct path)
+# Load trained model
 with open("random_forest_model.pkl", "rb") as file:
     model_pipeline = pickle.load(file)
-
-# Loading the model using joblib
-# model_pipeline = joblib.load("random_forest_model.joblib")
 
 
 # Function to encode user inputs and make predictions
